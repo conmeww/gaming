@@ -1,0 +1,291 @@
+// Заголовки, общие БЄМ блоки и проче...
+$first-color: #1b1b1b;
+$second-color: #4bb5f0;
+$third-color: rgba(225, 223, 223, 1);
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+}
+ul,
+ol,
+li {
+  list-style: none;
+}
+img {
+  vertical-align: top;
+}
+
+html,
+body {
+  height: 100%;
+}
+body._lock {
+  overflow: hidden;
+}
+.wrapper {
+  min-height: 100%;
+}
+
+body {
+  background-color: #0f0f0f;
+  color: $third-color;
+
+  font-weight: 400;
+  font-style: normal;
+  font-family: "FrederikLight";
+  font-weight: 300;
+}
+
+.col-lg {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+/// fonts
+h1 {
+  font-size: 68px;
+  line-height: 112%;
+}
+h2 {
+  font-size: 42px;
+  margin-bottom: 100px;
+  line-height: 130%;
+}
+h2.col-lg,
+h2.h2__container {
+  margin-bottom: 100px;
+  line-height: 130%;
+}
+h3 {
+  font-size: 25px;
+  font-family: "FrederikMedium";
+  font-weight: 500;
+}
+
+p {
+  font-size: 18px;
+  font-family: "Roboto";
+  font-weight: 400;
+  line-height: 124%;
+  &:not(:last-of-type) {
+    padding-bottom: 30px;
+  }
+}
+.p-lg {
+  font-size: 36px;
+  font-family: "FrederikMedium";
+  font-weight: 500;
+}
+.p-md {
+  font-size: 25px;
+  font-family: "FrederikMedium";
+  font-weight: 500;
+}
+/// buttons
+.btn {
+  position: relative;
+  display: block;
+}
+.btn--underlined,
+.decor__btn {
+  padding-bottom: 18px;
+  position: relative;
+  font-size: 20px;
+  border-bottom: 4px solid $third-color;
+  font-family: "FrederikMedium";
+  font-weight: 500;
+  &:hover {
+    border-bottom: 4px solid rgb(225, 223, 223);
+  }
+  &:active,
+  &:focus {
+    color: #4bb5f0;
+    border-bottom: 4px solid #4bb5f0;
+  }
+}
+.contacts__ic {
+  &:hover {
+    &::before {
+      content: url(../img/cover.jpg);
+    }
+  }
+}
+.checkbox__label {
+  font-size: 20px;
+}
+.form__error {
+  position: absolute;
+  right: 30px;
+  font-size: 13px;
+  color: #f05f4b;
+}
+.form-header__input-field {
+  .form__error {
+    margin-top: -55px;
+  }
+}
+/// mask
+
+// .mask-text {
+//   font-size: 7rem;
+//   font-weight: 700;
+//   margin-left: -30px;
+//   width: 300px;
+//   @supports (background-clip: text) or (-webkit-background-clip: text) {
+//     background: linear-gradient(#0f0f0f, #0f0f0f) padding-box
+//         /* Don't extend this to border */,
+//       linear-gradient(
+//           to right bottom,
+//           #9171f0,
+//           #4bb5f0,
+//           #94f04b,
+//           #fcd303,
+//           #f05f4b,
+//           #d155f0
+//         )
+//         border-box;
+
+//     -webkit-background-clip: text;
+//     -webkit-text-fill-color: transparent;
+//   }
+
+// }
+
+.gradient-text {
+  background-image: linear-gradient(
+    to right,
+    #9171f0,
+    #4bb5f0,
+    #94f04b,
+    #fcd303,
+    #f05f4b
+  );
+  background-size: 100%;
+  background-repeat: repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+}
+/// forms
+.form {
+  border-radius: 20px;
+}
+.form-body {
+  width: 500px;
+  height: 646px;
+  &__title {
+    margin-bottom: 80px;
+  }
+}
+.form__content {
+  display: flex;
+  flex-direction: column;
+}
+input:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+input[type="text"] {
+  display: block;
+  width: 100%;
+  height: auto;
+  padding-bottom: 12px;
+  transition: all 0.3s;
+  color: $third-color;
+  background: transparent;
+  border-bottom: 1px solid $third-color;
+  font-size: 18px;
+}
+
+.sm-mrg {
+  margin-bottom: 60px;
+}
+
+.lg-mrg {
+  margin-bottom: 80px;
+}
+
+.input-label {
+  position: relative;
+  top: -41px;
+  display: inline-block;
+  width: 100%;
+  z-index: 2;
+  float: left;
+  pointer-events: none;
+  transition: all 0.3s;
+  font-size: 18px;
+  font-weight: 400;
+  text-align: left;
+  span {
+    color: $third-color;
+  }
+}
+
+.input-field input[type="text"]:focus,
+.input-field input[type="text"]:active {
+  transform: translateY(20px);
+}
+.form__title {
+  font-size: 25px;
+}
+.form-main__title {
+  margin-bottom: 115px;
+}
+.form-main__checkbox {
+  margin-bottom: 60px;
+}
+.checkbox-input {
+  position: absolute;
+  opacity: 0;
+
+  & + label {
+    position: relative;
+    cursor: pointer;
+    padding: 0;
+    padding-left: 45px;
+  }
+
+  &:focus + label:before {
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12);
+  }
+
+  &:disabled + label {
+    color: #b8b8b8;
+    cursor: auto;
+  }
+
+  &:checked + label:after {
+    content: url(../img/checkmark-lg.svg);
+    position: absolute;
+    left: 3px;
+    top: -2px;
+  }
+}
+.d-none {
+  display: none;
+}
+.bottom-shadow {
+  height: 200px;
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  background: linear-gradient(
+    180deg,
+    #0f0f0f 0%,
+    rgba(15, 15, 15, 0.76) 43.75%,
+    rgba(15, 15, 15, 0.18) 80.21%,
+    rgba(15, 15, 15, 0) 100%
+  );
+  transform: rotate(-180deg);
+  z-index: 20;
+  pointer-events: none;
+}
