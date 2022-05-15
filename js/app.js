@@ -3036,19 +3036,6 @@
     (() => {
         "use strict";
         const flsModules = {};
-        function isWebp() {
-            function testWebP(callback) {
-                let webP = new Image;
-                webP.onload = webP.onerror = function() {
-                    callback(2 == webP.height);
-                };
-                webP.src = "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA";
-            }
-            testWebP((function(support) {
-                let className = true === support ? "webp" : "no-webp";
-                document.documentElement.classList.add(className);
-            }));
-        }
         let isMobile = {
             Android: function() {
                 return navigator.userAgent.match(/Android/i);
@@ -3901,7 +3888,7 @@
                     let checkboxes = form.querySelectorAll(".checkbox__input");
                     if (checkboxes.length > 0) for (let index = 0; index < checkboxes.length; index++) {
                         const checkbox = checkboxes[index];
-                        checkbox.checked = false;
+                        checkbox.checked = true;
                     }
                     if (flsModules.select) {
                         let selects = form.querySelectorAll(".select");
@@ -7669,6 +7656,7 @@
                     crossFade: true
                 },
                 virtualTranslate: true,
+                autoHeight: true,
                 speed: 100,
                 slidersPerView: 1,
                 effect: "fade",
@@ -10993,7 +10981,6 @@
             }));
         }));
         window["FLS"] = true;
-        isWebp();
         addTouchClass();
         addLoadedClass();
         menuInit();
