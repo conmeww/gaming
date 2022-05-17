@@ -10939,7 +10939,9 @@
             let button = removeCartItemButtons[i];
             button.addEventListener("click", (function(event) {
                 let buttonClicked = event.target;
-                buttonClicked.parentElement.parentElement.parentElement.getElementsByClassName("favorites-ic")[0].style.display = "block";
+                let getBtnFav = buttonClicked.parentElement.parentElement.parentElement.getElementsByClassName("favorites-ic")[0].style.display = "block";
+                console.log(getBtnFav);
+                buttonClicked.parentElement.style.display = "none";
                 const getImageSrc = buttonClicked.parentElement.parentElement.parentElement.getElementsByClassName("work__img")[0].src;
                 var cartItems = document.getElementsByClassName("favorites__items")[0];
                 var cartItemsNames = cartItems.getElementsByClassName("favorites__img");

@@ -165,7 +165,6 @@ body {
 input,
 button,
 textarea {
-  font-family: "Frederic";
   font-size: inherit;
 }
 
@@ -270,7 +269,7 @@ body::after {
 .popup_show {
   z-index: 150;
   visibility: visible;
-  overflow: auto;
+  overflow: hidden;
   pointer-events: auto;
 }
 
@@ -691,7 +690,7 @@ input[type=text] {
   color: rgb(225, 223, 223);
   background: transparent;
   border-bottom: 1px solid rgb(225, 223, 223);
-  font-size: 0.938vw;
+  font-size: 1.3vw;
   outline: none;
   position: relative;
 }
@@ -705,7 +704,7 @@ input:focus {
 }
 
 input:focus + label {
-  transform: translateY(-20px);
+  transform: translateY(-17px);
 }
 
 .input-label {
@@ -722,7 +721,7 @@ input:focus + label {
   left: 0;
   top: 0;
   transition: transform 400ms ease;
-  transform: translateY(-20px);
+  transform: translateY(-17px);
   position: absolute;
   background: transparent;
 }
@@ -765,7 +764,7 @@ input:focus + label {
 
   .bottom-shadow {
     height: 50vw;
-    background: linear-gradient(180deg, #0f0f0f 0%, rgba(15, 15, 15, 0.86) 43.75%, rgba(15, 15, 15, 0.28) 80.21%, rgba(15, 15, 15, 0) 100%);
+    background: linear-gradient(180deg, #0f0f0f 0%, rgba(15, 15, 15, 0.96) 30%, rgba(15, 15, 15, 0.28) 80.21%, rgba(15, 15, 15, 0) 100%);
   }
 
   .form-section {
@@ -793,7 +792,7 @@ input:focus + label {
   }
 
   .form-body {
-    width: 100vw;
+    width: 100%;
     background-image: url(../img/contact-bg.png);
     background-repeat: no-repeat;
     background-size: cover;
@@ -1324,6 +1323,21 @@ input:focus + label {
   background: linear-gradient(to left, #9171f0, #4bb5f0, #94f04b 0, #fcd303, #f05f4b, #d155f0);
 }
 
+.anim-modal-1 {
+  position: absolute;
+  height: 40%;
+  width: 40%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.5;
+  filter: blur(120px);
+}
+
+.anim-modal-1 {
+  background: linear-gradient(to right, #9171f0, #4bb5f0, #94f04b, #fcd303, #f05f4b, #d155f0);
+}
+
 .messagers {
   display: none;
   z-index: 101;
@@ -1466,9 +1480,11 @@ input:focus + label {
 
 .favs-remove {
   display: none;
-  left: -1.979vw;
-  top: -1.667vw;
+  left: -2.1vw;
+  top: -1.9vw;
   position: absolute;
+  height: 2vw;
+  width: 2vw;
 }
 
 .favorites-ic__inner {
@@ -1499,7 +1515,7 @@ input:focus + label {
 
 .favorites-ic--clicked {
   transition: ease 0.3s all;
-  transform: translateY(-50%) scale(1.5);
+  transform: translate(-50%, -50%) scale(2.2);
   fill: #f05f4b;
 }
 
@@ -1522,7 +1538,7 @@ input:focus + label {
 .favs-number {
   font-size: 0.625vw;
   top: 50%;
-  left: 50%;
+  left: 46%;
   transform: translate(-50%, -50%);
   position: absolute;
 }
@@ -1595,6 +1611,17 @@ input:focus + label {
   }
 }
 @media (max-width: 768px) {
+  .anim-modal-1 {
+    position: absolute;
+    height: 56%;
+    width: 90%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.2;
+    filter: blur(60px);
+  }
+
   .col-lg {
     max-width: 91vw;
   }
@@ -1858,14 +1885,16 @@ input:focus + label {
   .favs-remove {
     left: -9.4vw;
     top: -9.3vw;
+    height: 7vw;
+    width: 7vw;
   }
 
   .form-header {
     width: 60vw;
     height: auto;
-    top: 14vw;
+    top: 15vw;
     padding: 3.125vw 5vw 10vw 5vw;
-    right: 20vw;
+    right: 29vw;
   }
 
   .form-header__content {
@@ -1873,8 +1902,8 @@ input:focus + label {
   }
 
   .form-modal {
-    width: 74.609vw;
-    height: 74.609vw;
+    width: 90vw;
+    height: 80vw;
   }
   .form-modal .form__content {
     width: auto;
@@ -1887,17 +1916,22 @@ input:focus + label {
   }
 
   .form-modal__title {
-    margin-bottom: 10vw;
+    margin-bottom: 13vw;
   }
 
-  .input-label,
-input[type=text] {
+  .input-label {
     font-size: 2.3vw;
     font-family: inherit;
   }
 
+  input[type=text] {
+    font-size: 4vw;
+    font-family: inherit;
+  }
+
   .favs-number {
-    font-size: 2vw;
+    font-size: 3vw;
+    left: 50%;
   }
 
   .form-header__title {
@@ -1949,15 +1983,15 @@ input[type=text] {
   }
 
   .messagers {
-    right: 12.1vw;
+    right: 18vw;
     width: 40vw;
-    top: 14vw;
+    top: 15vw;
   }
 
   .favorites {
-    right: 4vw;
+    right: 6.6vw;
     width: auto;
-    top: 14vw;
+    top: 15vw;
   }
 
   .form__error {
@@ -2071,6 +2105,8 @@ input[type=text] {
 .header__icon {
   cursor: pointer;
   position: relative;
+  width: 2.083vw;
+  height: 2.083vw;
 }
 .header__icon:not(:last-of-type) {
   margin-right: 1.25vw;
@@ -2416,9 +2452,9 @@ body._touch .menu__list > li._active .menu__arrow {
   }
 
   .menu__body._active {
-    right: 5vw;
+    right: 2vw;
     position: fixed;
-    top: 14vw;
+    top: 15vw;
     display: block;
     width: 20vw;
     height: auto;
@@ -2429,6 +2465,7 @@ body._touch .menu__list > li._active .menu__arrow {
   }
   .menu__body._active .menu__body-arr {
     display: block;
+    right: 2.3vw;
   }
 
   .menu__icon {
@@ -2436,6 +2473,7 @@ body._touch .menu__list > li._active .menu__arrow {
     display: block;
     position: relative;
     width: 8vw;
+    height: 8vw;
     cursor: pointer;
     position: absolute;
     right: 0;
@@ -2478,7 +2516,7 @@ body._touch .menu__list > li._active .menu__arrow {
   }
 
   .menu__icon::before {
-    top: 3.5vw;
+    top: 3.2vw;
     background-color: #9171f0;
   }
 
@@ -2491,7 +2529,7 @@ body._touch .menu__list > li._active .menu__arrow {
   }
 }
 .menu__icon::after {
-  bottom: 3.5vw;
+  bottom: 3.4vw;
   background-color: #9171f0;
 }
 
@@ -2499,6 +2537,10 @@ body._touch .menu__list > li._active .menu__arrow {
   .header {
     min-height: 40vw;
     background: linear-gradient(180deg, #0f0f0f 0%, rgba(15, 15, 15, 0.86) 43.75%, rgba(15, 15, 15, 0.28) 80.21%, rgba(15, 15, 15, 0) 100%);
+  }
+  .header__icon {
+    width: 8vw;
+    height: 8vw;
   }
 
   .menu__link {
@@ -2553,6 +2595,10 @@ body._touch .menu__list > li._active .menu__arrow {
 
   .header__icon:last-of-type {
     margin-right: 10vw;
+  }
+
+  .menu__link:hover {
+    border-bottom: 0.208vw solid #4bb5f0;
   }
 }
 .footer {
