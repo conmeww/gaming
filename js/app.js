@@ -3143,9 +3143,6 @@
             if (target.hidden) return _slideDown(target, duration); else return _slideUp(target, duration);
         };
         let bodyLockStatus = true;
-        let bodyLockToggle = (delay = 500) => {
-            if (document.documentElement.classList.contains("lock")) bodyUnlock(delay); else bodyLock(delay);
-        };
         let bodyUnlock = (delay = 500) => {
             let body = document.querySelector("body");
             if (bodyLockStatus) {
@@ -3357,14 +3354,10 @@
         }
         function menuInit() {
             if (document.querySelector(".icon-menu")) document.addEventListener("click", (function(e) {
-                if (bodyLockStatus && e.target.closest(".icon-menu")) {
-                    bodyLockToggle();
-                    document.documentElement.classList.toggle("menu-open");
-                }
+                if (bodyLockStatus && e.target.closest(".icon-menu")) document.documentElement.classList.toggle("menu-open");
             }));
         }
         function menuClose() {
-            bodyUnlock();
             document.documentElement.classList.remove("menu-open");
         }
         function showMore() {
@@ -3520,10 +3513,15 @@
         const iconMenu = document.querySelector(".menu__icon");
         const menuBody = document.querySelector(".menu__body");
         if (iconMenu) iconMenu.addEventListener("click", (function(e) {
-            document.body.classList.toggle("_lock");
             iconMenu.classList.toggle("_active");
             menuBody.classList.toggle("_active");
         }));
+        document.addEventListener("click", (function(event) {
+            if (!event.target.closest(".menu__icon") && !event.target.closest(".menu__body")) {
+                iconMenu.classList.remove("_active");
+                menuBody.classList.remove("_active");
+            }
+        }), false);
         class Popup {
             constructor(options) {
                 let config = {
@@ -7626,9 +7624,14 @@
                 observer: true,
                 observeParents: true,
                 spaceBetween: 30,
-                autoHeight: true,
-                speed: 800,
+                autoHeight: false,
+                speed: 500,
                 loop: true,
+                centeredSlides: true,
+                autoplay: {
+                    delay: 400,
+                    disableOnInteraction: false
+                },
                 effect: "fade",
                 breakpoints: {
                     320: {
@@ -7636,7 +7639,7 @@
                         spaceBetween: 30
                     },
                     768: {
-                        slidesPerView: 1.5,
+                        slidesPerView: 3.5,
                         spaceBetween: 30
                     },
                     992: {
@@ -7676,10 +7679,14 @@
                 observeParents: true,
                 spaceBetween: 50,
                 autoHeight: false,
-                speed: 800,
+                speed: 900,
                 autoplay: true,
                 loop: true,
                 centeredSlides: true,
+                autoplay: {
+                    delay: 400,
+                    disableOnInteraction: false
+                },
                 breakpoints: {
                     320: {
                         slidesPerView: 1.5,
@@ -10860,6 +10867,13 @@
                 showMaskOnHover: false
             }).mask(num);
         }));
+        if (window.matchMedia("(max-width: 768px)").matches) {
+            let showLessWorks = document.querySelectorAll(".works__item");
+            const nodelistToArray = Array.prototype.slice.call(showLessWorks).slice(3, 9);
+            nodelistToArray.forEach((item => {
+                item.classList.add("d-none");
+            }));
+        }
         let showMoreProducts = document.getElementById("show-more-works");
         if (showMoreProducts || false) showMoreProducts.addEventListener("click", (() => {
             let hiddenElements = document.querySelectorAll(".works__items .d-none");
@@ -10875,6 +10889,17 @@
         const b1 = "linear-gradient(to right,rgba(145, 113, 240, 1),rgba(75, 181, 240, 1),rgba(148, 240, 75, 1),rgba(252, 211, 3, 1),rgba(240, 95, 75, 1),rgba(209, 85, 240, 1));";
         const b2 = "linear-gradient(to right,rgba(209, 85, 240, 0.5),rgba(240, 95, 75, 1),rgba(252, 211, 3, 0.1),rgba(148, 240, 75, 0.1),rgba(75, 181, 240, 1),rgba(145, 113, 240, 1))";
         gsapWithCSS.fromTo(".info__img--anim", {
+            background: b1
+        }, {
+            ease: "none",
+            duration: 2,
+            background: b2,
+            repeat: -1,
+            yoyo: true,
+            scale: .8,
+            opacity: 1
+        });
+        gsapWithCSS.fromTo(".hero__bg--anim", {
             background: b1
         }, {
             ease: "none",
@@ -10913,9 +10938,7 @@
             let button = removeCartItemButtons[i];
             button.addEventListener("click", (function(event) {
                 let buttonClicked = event.target;
-                let getBtnFav = buttonClicked.parentElement.parentElement.parentElement.getElementsByClassName("favorites-ic")[0].style.display = "block";
-                console.log(getBtnFav);
-                buttonClicked.parentElement.style.display = "none";
+                buttonClicked.parentElement.parentElement.parentElement.getElementsByClassName("favorites-ic")[0].style.display = "block";
                 const getImageSrc = buttonClicked.parentElement.parentElement.parentElement.getElementsByClassName("work__img")[0].src;
                 var cartItems = document.getElementsByClassName("favorites__items")[0];
                 var cartItemsNames = cartItems.getElementsByClassName("favorites__img");
