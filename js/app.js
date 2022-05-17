@@ -7625,12 +7625,13 @@
                 observeParents: true,
                 spaceBetween: 30,
                 autoHeight: false,
-                speed: 500,
+                speed: 1500,
                 loop: true,
                 centeredSlides: true,
                 autoplay: {
-                    delay: 400,
-                    disableOnInteraction: false
+                    delay: 800,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true
                 },
                 effect: "fade",
                 breakpoints: {
@@ -7679,12 +7680,12 @@
                 observeParents: true,
                 spaceBetween: 50,
                 autoHeight: false,
-                speed: 900,
+                speed: 1500,
                 autoplay: true,
                 loop: true,
                 centeredSlides: true,
                 autoplay: {
-                    delay: 400,
+                    delay: 800,
                     disableOnInteraction: false
                 },
                 breakpoints: {

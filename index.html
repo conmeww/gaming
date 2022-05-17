@@ -2,11 +2,11 @@
 <html lang="ru">
 
 <head>
-	<title>Главная</title>
+	<title>Gaming Setup</title>
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20220517101746">
+	<link rel="stylesheet" href="css/style.min.css?_v=20220517121244">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -855,7 +855,9 @@
 		<div class="contacts__content">
 			<div class="contacts__info">
 				<p class="p-lg"><a href="tel:+78129054642">+7 (812) 905-46-42</a></p>
-				<p class="p-md"><a href="mailto:hallo@gamesetup.ru">hallo@gamesetup.ru</a></p>
+				<p class="p-md">
+					<a href="mailto:hallo@gamesetup.ru">hallo@gamesetup.ru</a>
+				</p>
 				<p class="p-md">Санкт-Петербург, Пискаревский пр-кт, д. 25, офис 701.2</p>
 
 				<div class="contacts__socials">
@@ -878,7 +880,7 @@
 				</div>
 			</div>
 			<div class="contacts__map">
-				<img src="img/map.png" alt="Map" />
+				<div class="map map-sm" id="map"></div>
 			</div>
 		</div>
 	</section>
@@ -1238,7 +1240,51 @@
 
 	</div>
 
-	<script src="js/app.min.js?_v=20220517101746"></script>
+	<script src="js/app.min.js?_v=20220517121244"></script>
+	<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=ea3b87b4-72fb-487e-9070-ac17499e5cb6&_v=20220517121244" type="text/javascript"></script>
+	<script>
+		ymaps.ready(function() {
+			var myMap = new ymaps.Map(
+				"map", {
+					center: [59.969871, 30.413075],
+					zoom: 15,
+					controls: [
+						"zoomControl",
+						"searchControl",
+						"typeSelector",
+						"fullscreenControl",
+						"routeButtonControl",
+					],
+				}, {
+					searchControlProvider: "yandex#search",
+				}
+			);
+			var myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
+				preset: "islands#redDotIcon",
+			});
+
+			myMap.geoObjects.add(myPlacemark);
+
+			//скролл внутри карты, но отключение зума при скролле страницы
+			myMap.behaviors.disable(["scrollZoom"]);
+			var body = document.getElementsByTagName("body")[0];
+			body.onkeydown = callbackDown;
+			body.onkeyup = callbackUp;
+
+			function callbackDown(e) {
+				if (e.keyCode === 17) {
+					myMap.behaviors.enable(["scrollZoom"]);
+				}
+			}
+
+			function callbackUp(e) {
+				if (e.keyCode === 17) {
+					myMap.behaviors.disable(["scrollZoom"]);
+				}
+			}
+		});
+	</script>
+
 </body>
 
 </html>
