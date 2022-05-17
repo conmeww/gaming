@@ -218,6 +218,7 @@ h6 {
 }
 .wrapper > main {
   flex: 1 1 auto;
+  overflow-x: hidden;
 }
 .wrapper > * {
   min-width: 0;
@@ -234,6 +235,11 @@ h6 {
   box-sizing: content-box;
   margin: 0 auto;
   padding: 0;
+}
+
+input:-internal-autofill-selected {
+  background-color: transparent !important;
+  appearance: unset;
 }
 
 body::after {
@@ -270,8 +276,11 @@ body::after {
 .popup_show {
   z-index: 150;
   visibility: visible;
-  overflow: hidden;
+  overflow-x: hidden !important;
   pointer-events: auto;
+}
+.popup_show .popup__wrapper .anim-modal-1 {
+  display: block;
 }
 
 .popup_show .popup__content {
@@ -398,6 +407,7 @@ h2 {
   font-size: 2.188vw;
   margin-bottom: 5.208vw;
   line-height: 130%;
+  z-index: 200;
 }
 
 h2.col-lg,
@@ -685,7 +695,7 @@ input:-internal-autofill-selected {
 input[type=text] {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
   padding-bottom: 0.625vw;
   transition: all 0.3s;
   color: rgb(225, 223, 223);
@@ -810,7 +820,6 @@ input:focus + label {
   }
 
   input {
-    height: 5.208vw;
     border-bottom: 0.13vw solid rgb(225, 223, 223);
   }
 
@@ -1325,6 +1334,7 @@ input:focus + label {
 }
 
 .anim-modal-1 {
+  display: none;
   position: absolute;
   height: 40%;
   width: 40%;
