@@ -264,6 +264,7 @@ body::after {
   transition: visibility 0.8s ease 0s;
   visibility: hidden;
   pointer-events: none;
+  overflow: hidden;
 }
 
 .popup_show {
@@ -1955,7 +1956,7 @@ input:focus + label {
   }
 
   .checkbox__label {
-    font-size: 1.8vw;
+    font-size: 2.3vw;
   }
 
   .checkbox {
@@ -2452,14 +2453,14 @@ body._touch .menu__list > li._active .menu__arrow {
   }
 
   .menu__body._active {
-    right: 2vw;
+    right: 4vw;
     position: fixed;
     top: 15vw;
     display: block;
     width: 20vw;
     height: auto;
     background-color: #1b1b1b;
-    padding: 3vw;
+    padding: 4vw;
     transition: left 0.3s ease 0s;
     border-radius: 1.406vw;
   }
