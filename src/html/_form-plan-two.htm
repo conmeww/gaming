@@ -1,5 +1,6 @@
 <div id="popup-plan-two" aria-hidden="true" class="popup">
   <div class="popup__wrapper">
+    <div class="anim-modal-1"></div>
     <div class="popup__content">
       <button data-close type="button" class="popup__close">
         <svg
@@ -33,7 +34,13 @@
           />
         </svg>
       </button>
-      <form class="form form-modal" action="#" name="form-modal">
+      <form
+        class="form form-modal form-plan2"
+        name="form-plan2"
+        id="form-order"
+        action="mailform-plan2.php"
+        method="POST"
+      >
         <div class="form__content">
           <p class="form__title form-modal__title">
             Получите консультацию специалиста:
@@ -41,30 +48,28 @@
 
           <div class="input-field sm-mrg">
             <input
-              data-error="Введен не верный E-mail"
+              data-error="Введено некорректное имя"
               data-required="name"
               type="text"
-              name="form[1]"
+              data-validate
+              required
+              name="name-plan2"
             />
-            <label class="input-label">
-              <span>Ваше имя</span>
-            </label>
+            <label class="input-label" for="name-plan2">Ваше имя</label>
           </div>
 
           <div class="input-field sm-mrg">
             <input
-              data-error="Введен не верный E-mail"
-              data-required="name"
+              data-error="Введен некорректный номер телефона"
+              class="phone-num"
+              data-validate
+              required
               type="text"
-              name="form[1]"
-              id="phone-inp"
+              name="phone-plan2"
             />
-            <label class="input-label">
-              <span>Номер телефона</span>
-            </label>
+            <label class="input-label" for="phone-plan2">Номер телефона</label>
           </div>
-
-          <div class="checkbox checkbox__modal">
+          <div class="checkbox">
             <span class="checkbox__bg"
               ><svg
                 width="32"
@@ -80,23 +85,20 @@
               </svg>
             </span>
             <input
-              class="checkbox-input"
-              data-required="checkbox"
-              id="cm_1"
-              data-error="Ошибка"
+              id="p_2"
+              class="checkbox__input"
               type="checkbox"
               value="1"
-              name="form[]"
+              name="p_2"
+              data-required="checkbox"
+              checked
             />
-
-            <label for="cm_1"
+            <label for="p_2" class="checkbox__label"
               >Соглашаюсь на обработку персональных данных</label
             >
           </div>
         </div>
-        <button type="submit" class="btn btn--underlined" disabled>
-          Отправить
-        </button>
+        <button type="submit" class="btn btn--underlined">Отправить</button>
       </form>
     </div>
   </div>

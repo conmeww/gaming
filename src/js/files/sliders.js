@@ -39,7 +39,7 @@ function initSliders() {
       observeParents: true,
       slidesPerView: 7,
       spaceBetween: 50,
-      autoHeight: true,
+      autoHeight: false,
       speed: 800,
       // autoplay: true,
 
@@ -79,27 +79,27 @@ function initSliders() {
       // },
 
       // Брейкпоинты
-      /*
-			breakpoints: {
-				320: {
-					slidesPerView: 1,
-					spaceBetween: 0,
-					autoHeight: true,
-				},
-				768: {
-					slidesPerView: 2,
-					spaceBetween: 20,
-				},
-				992: {
-					slidesPerView: 3,
-					spaceBetween: 20,
-				},
-				1268: {
-					slidesPerView: 4,
-					spaceBetween: 30,
-				},
-			},
-			*/
+
+      breakpoints: {
+        320: {
+          slidesPerView: 3,
+          spaceBetween: 30,
+ 
+        },
+        768: {
+          slidesPerView: 5,
+          spaceBetween: 30,
+        },
+        992: {
+          slidesPerView: 5,
+          spaceBetween: 30,
+        },
+        1268: {
+          slidesPerView: 7,
+          spaceBetween: 30,
+        },
+      },
+
       // События
       on: {},
     });
@@ -118,7 +118,7 @@ function initSliders() {
       //slidesPerView: 5,
       spaceBetween: 30,
       autoHeight: false,
-      speed: 800,
+      speed: 1500,
       // autoplay: true,
 
       //touchRatio: 0,
@@ -126,12 +126,18 @@ function initSliders() {
       loop: true,
       //preloadImages: false,
       //lazy: true,
+      centeredSlides: true,
+      autoplay: {
+        delay: 800,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
+      },
 
       effect: "fade",
       // autoplay: {
       //   delay: 300,
       //   disableOnInteraction: false,
-      //   pauseOnMouseEnter: true,
+      //
       // },
 
       // Пагинация
@@ -160,9 +166,8 @@ function initSliders() {
 
       breakpoints: {
         320: {
-          slidesPerView: 2.5,
-          spaceBetween: 0,
-          autoHeight: true,
+          slidesPerView: 1.5,
+          spaceBetween: 30,
         },
         768: {
           slidesPerView: 3.5,
@@ -192,7 +197,7 @@ function initSliders() {
       modules: [Navigation, Autoplay, Pagination, EffectFade],
       fadeEffect: { crossFade: true },
       virtualTranslate: true,
-
+      autoHeight: true,
       speed: 100,
       slidersPerView: 1,
       effect: "fade",
@@ -250,16 +255,15 @@ function initSliders() {
       //slidesPerView: 3.9,
       spaceBetween: 50,
       autoHeight: false,
-      speed: 800,
+      speed: 1500,
       autoplay: true,
       loop: true,
 
       centeredSlides: true,
-      // autoplay: {
-      //   delay: 300,
-      //   disableOnInteraction: false,
-      //   pauseOnMouseEnter: true,
-      // },
+      autoplay: {
+        delay: 800,
+        disableOnInteraction: false,
+      },
 
       // Кнопки "влево/вправо"
       /*    navigation: {

@@ -24,12 +24,19 @@ body::after {
   transition: visibility 0.8s ease 0s;
   visibility: hidden;
   pointer-events: none;
+  overflow: hidden;
 }
 .popup_show {
   z-index: 150;
   visibility: visible;
-  overflow: auto;
+  //overflow: auto;
+  overflow-x: hidden !important;
   pointer-events: auto;
+  .popup__wrapper {
+    .anim-modal-1 {
+      display: block;
+    }
+  }
 }
 .popup_show .popup__content {
   visibility: visible;

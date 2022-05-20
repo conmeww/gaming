@@ -2,19 +2,44 @@
 import { isMobile } from "./functions.js";
 // Подключение списка активных модулей
 import { flsModules } from "./modules.js";
-// input mask
-let phoneinp = document.getElementById("phone-inp");
 
-Inputmask({
-  mask: "+7(999) 999-99-99",
-  showMaskOnFocus: true,
-  showMaskOnHover: false,
-}).mask(phoneinp);
+import IMask from "imask";
+// input mask
+// let phoneinp = document.querySelectorAll(".phone-num");
+
+// phoneinp.forEach((num) => {
+//   Inputmask({
+//     mask: "+7(999) 999-99-99",
+//     showMaskOnFocus: true,
+//     showMaskOnHover: false,
+//   }).mask(num);
+// });
+
+// const checkboxGroup = document.querySelectorAll('.checkbox')
+// checkboxGroup.forEach(checkbox => {
+// checkbox.addEventListener('click', function(e) {
+//   if (checkbox.querySelector('label').innerHTML == "Соглашаюсь на обработку персональных данных") {
+//     checkbox.querySelector('label').innerHTML = "Это обязательное поле"
+//     } else {
+//       checkbox.querySelector('label').innerHTML = "Это обязательное поле"
+//     }
+//   },false)
+// },false)
+if (window.matchMedia("(max-width: 768px)").matches) {
+  let showLessWorks = document.querySelectorAll(".works__item");
+  const nodelistToArray = Array.prototype.slice.call(showLessWorks).slice(3, 9);
+  nodelistToArray.forEach((item) => {
+    item.classList.add("item-d-none");
+  });
+}
+
 let showMoreProducts = document.getElementById("show-more-works");
 
 if (showMoreProducts || false) {
   showMoreProducts.addEventListener("click", () => {
-    let hiddenElements = document.querySelectorAll(".works__items .d-none");
+    let hiddenElements = document.querySelectorAll(
+      ".works__items .item-d-none"
+    );
 
     let commentsList = Array.prototype.slice.call(hiddenElements).slice(0, 3);
 
@@ -28,7 +53,7 @@ if (showMoreProducts || false) {
     });
 
     if (hiddenElements.length === 0) {
-      showMoreProducts.className = "d-none";
+      showMoreProducts.className = "item-d-none";
     }
   });
 }
@@ -61,6 +86,20 @@ gsap.fromTo(
     opacity: 1,
   }
 );
+gsap.fromTo(
+  ".hero__bg--anim",
+  { background: b1 },
+  {
+    ease: "none",
+    duration: 2,
+    background: b2,
+    repeat: -1,
+    yoyo: true,
+    scale: 0.8,
+    opacity: 1,
+  }
+);
+
 // show messagers header
 const btnShowMessagers = document.querySelector(".header__message");
 btnShowMessagers.addEventListener("click", function () {
@@ -101,82 +140,27 @@ document.addEventListener(
 function closeHeaderForm() {
   document.querySelector(".form-header").style.display = "none";
 }
-/// add to favorits
-// const removeCartItemButtons = document.getElementsByClassName("btn-danger");
-// for (var i = 0; i < removeCartItemButtons.length; i++) {
-//   let button = removeCartItemButtons[i];
-//   button.addEventListener("click", function (event) {
-//     let buttonClicked = event.target;
-//     buttonClicked.parentElement.parentElement.remove();
-//   });
-// }
-// const addToCartButtons = document.getElementsByClassName("shop-item-button");
-// for (var i = 0; i < addToCartButtons.length; i++) {
-//   let button = addToCartButtons[i];
-//   button.addEventListener("click", addToCart);
-// }
-// function removeCartItem(event) {
-//   var buttonClicked = event.target;
-//   buttonClicked.parentElement.remove();
-// }
-// function addToCart() {
-//   let button = event.target;
-//   let shopItem = button.parentElement.parentElement;
 
-//   let imageSrc = shopItem.getElementsByClassName("work__img")[0].src;
-
-//   addItemToCart(imageSrc);
-// }
-// function addItemToCart(imageSrc) {
-//   var cartRow = document.createElement("div");
-//   var cartItems = document.getElementsByClassName("cart-items")[0];
-
-//   cartRow.classList.add("cart-row");
-
-//   var cartRowContents = `<div class="cart-item cart-column">
-//                         <img class="cart-item-image" src="${imageSrc}" width="100" height="100">
-
-//                    <button class="btn btn-danger" type="button">REMOVE</button>  </div>`;
-//   cartRow.innerHTML = cartRowContents;
-//   cartItems.append(cartRow);
-//   cartRow
-//     .getElementsByClassName("btn-danger")[0]
-//     .addEventListener("click", removeCartItem);
-// }
 let favsNumberDiv = document.querySelector(".favs-number");
 let favsNumber = 0;
 
-console.log(favsNumber);
 const removeCartItemButtons = document.getElementsByClassName("favs-remove");
 for (var i = 0; i < removeCartItemButtons.length; i++) {
   let button = removeCartItemButtons[i];
   button.addEventListener("click", function (event) {
     let buttonClicked = event.target;
 
-    let getBtnFav =
-      (buttonClicked.parentElement.parentElement.parentElement.getElementsByClassName(
-        "favorites-ic"
-      )[0].style.display = "block");
-    console.log(getBtnFav);
+    // let getBtnFav =
+    //   buttonClicked.parentElement.parentElement.parentElement.getElementsByClassName(
+    //     "favorites__btn"
+    //   )[0];
+
     //getBtnFav.getElementsByClassName("favoites-ic")[0].style.display = "block";
-    //console.log(buttonClicked.parentElement.childNodes);
-    buttonClicked.parentElement.style.display = "none";
+
+    //buttonClicked.parentElement.style.display = "none";
 
     //buttonClicked.parentElementremove();
-    const getImageSrc =
-      buttonClicked.parentElement.parentElement.parentElement.getElementsByClassName(
-        "work__img"
-      )[0].src;
-    var cartItems = document.getElementsByClassName("favorites__items")[0];
 
-    var cartItemsNames = cartItems.getElementsByClassName("favorites__img");
-    for (var i = 0; i < cartItemsNames.length; i++) {
-      if (cartItemsNames[i].src == getImageSrc) {
-        //console.log(getImageSrc);
-        //console.log(cartItemsNames);
-        cartItemsNames[i].parentElement.parentElement.remove();
-      }
-    }
     const favCount = document.querySelectorAll(".favorite__item");
     favsNumber--;
     favsNumberDiv.innerHTML = favsNumber;
@@ -193,10 +177,11 @@ for (var i = 0; i < removeCartItemButtons.length; i++) {
     }
   });
 }
-const addToCartButtons = document.getElementsByClassName("favorites-ic");
+//const addToCartButtons = document.getElementsByClassName("favorites-ic");
+const addToCartButtons = document.getElementsByClassName("works__item");
+
 for (var i = 0; i < addToCartButtons.length; i++) {
   let button = addToCartButtons[i];
-
   button.addEventListener("click", addToCart);
 }
 function removeCartItem(event) {
@@ -207,25 +192,53 @@ function removeCartItem(event) {
   //  buttonClicked.parentElement.parentElement.getElementsByClassName(
   //    "favorites__img"
   //   )[0].src;
-  // console.log(favImageSRC);
 
   // hide sidebar when no fav is in
 }
 function addToCart() {
   let button = event.target;
-  let shopItem = button.parentElement.parentElement;
-  button.style.display = "none";
-  shopItem.getElementsByClassName("favs-remove")[0].style.display = "block";
+  let shopItem = button.parentElement;
+  let addToFavButton = shopItem.getElementsByClassName("favorites__btn")[0];
+  addToFavButton.classList.toggle("d-none");
+  shopItem.getElementsByClassName("btn-remove")[0].classList.toggle("d-none");
   let imageSrc = shopItem.getElementsByClassName("work__img")[0].src;
-  addItemToCart(imageSrc);
-  favsNumber++;
-  document.querySelector(".favorites-ic__outer").style.visibility = "hidden";
-  document
-    .querySelector(".favorites-ic__inner")
-    .classList.add("favorites-ic--clicked");
 
-  favsNumberDiv.innerHTML = favsNumber;
-  console.log(favsNumber);
+  if (
+    shopItem
+      .getElementsByClassName("favorites__btn")[0]
+      .classList.contains("d-none")
+  ) {
+    favsNumber++;
+    favsNumberDiv.innerHTML = favsNumber;
+    document.querySelector(".favorites-ic__outer").style.visibility = "hidden";
+    document
+      .querySelector(".favorites-ic__inner")
+      .classList.add("favorites-ic--clicked");
+    addItemToCart(imageSrc);
+  } else {
+    favsNumber--;
+
+    var cartItems = document.getElementsByClassName("favorites__items")[0];
+    var cartItemsNames = cartItems.getElementsByClassName("favorites__img");
+    for (var i = 0; i < cartItemsNames.length; i++) {
+      if (cartItemsNames[i].src == imageSrc) {
+        cartItemsNames[i].parentElement.parentElement.remove();
+      }
+    }
+    if (favsNumber == 0) {
+      favsNumberDiv.innerHTML = "";
+      document.querySelector(".favorites-ic__outer").style.visibility =
+        "visible";
+      document
+        .querySelector(".favorites-ic__inner")
+        .classList.remove("favorites-ic--clicked");
+      document.querySelector(".favorites").classList.add("d-none");
+      document.querySelector(".favorites__content").classList.add("d-none");
+      document.querySelector(".check-works").classList.remove("d-none");
+    } else {
+      favsNumberDiv.innerHTML = favsNumber;
+    }
+  }
 }
 function addItemToCart(imageSrc) {
   document.querySelector(".check-works").classList.add("d-none");
@@ -296,4 +309,389 @@ clickedFavIcon.addEventListener("click", function () {
   // document
   //   .querySelector(".favorites-ic__inner")
   //   .classList.toggle("favorites-ic--clicked");
+});
+
+document
+  .querySelectorAll('input[type="checkbox"]')
+  .forEach(function (checkbox) {
+    checkbox.addEventListener("change", function (event) {
+      let checkboxLabel = document.querySelector(
+        'label[for="' + checkbox.name + '"]'
+      );
+      if (checkboxLabel)
+        checkboxLabel.textContent = checkbox.checked
+          ? "Соглашаюсь на обработку персональных данных"
+          : "Это обязательное поле";
+    });
+  });
+/// validate
+export function formFieldsInit() {
+  // Если включено, добавляем функционал "скрыть плейсходлер при фокусе"
+  const formFields = document.querySelectorAll(
+    "input[placeholder],textarea[placeholder]"
+  );
+  if (formFields.length) {
+    formFields.forEach((formField) => {
+      if (!formField.hasAttribute("data-placeholder-nohide")) {
+        formField.dataset.placeholder = formField.placeholder;
+      }
+    });
+  }
+  document.body.addEventListener("focusin", function (e) {
+    const targetElement = e.target;
+    if (
+      targetElement.tagName === "INPUT" ||
+      targetElement.tagName === "TEXTAREA"
+    ) {
+      if (targetElement.dataset.placeholder) {
+        targetElement.placeholder = "";
+      }
+      if (!targetElement.hasAttribute("data-no-focus-classes")) {
+        targetElement.classList.add("_form-focus");
+        targetElement.parentElement.classList.add("_form-focus");
+      }
+      formValidate.removeError(targetElement);
+    }
+  });
+  document.body.addEventListener("focusout", function (e) {
+    const targetElement = e.target;
+    if (
+      targetElement.tagName === "INPUT" ||
+      targetElement.tagName === "TEXTAREA"
+    ) {
+      if (targetElement.dataset.placeholder) {
+        targetElement.placeholder = targetElement.dataset.placeholder;
+      }
+      if (!targetElement.hasAttribute("data-no-focus-classes")) {
+        targetElement.classList.remove("_form-focus");
+        targetElement.parentElement.classList.remove("_form-focus");
+      }
+      // Моментальная валидация
+      if (targetElement.hasAttribute("data-validate")) {
+        formValidate.validateInput(targetElement);
+      }
+    }
+  });
+}
+export let formValidate = {
+  getErrors(form) {
+    let error = 0;
+    let formRequiredItems = form.querySelectorAll("*[data-required]");
+    if (formRequiredItems.length) {
+      formRequiredItems.forEach((formRequiredItem) => {
+        if (
+          (formRequiredItem.offsetParent !== null ||
+            formRequiredItem.tagName === "SELECT") &&
+          !formRequiredItem.disabled
+        ) {
+          error += this.validateInput(formRequiredItem);
+        }
+      });
+    }
+    return error;
+  },
+  validateInput(formRequiredItem) {
+    let error = 0;
+    if (formRequiredItem.dataset.required === "email") {
+      formRequiredItem.value = formRequiredItem.value.replace(" ", "");
+      if (this.emailTest(formRequiredItem)) {
+        this.addError(formRequiredItem);
+        error++;
+      } else {
+        this.removeError(formRequiredItem);
+      }
+    } else if (
+      formRequiredItem.type === "checkbox" &&
+      !formRequiredItem.checked
+    ) {
+      this.addError(formRequiredItem);
+      error++;
+    } else {
+      if (!formRequiredItem.value) {
+        this.addError(formRequiredItem);
+        error++;
+      } else {
+        this.removeError(formRequiredItem);
+      }
+    }
+    return error;
+  },
+  addError(formRequiredItem) {
+    formRequiredItem.classList.add("_form-error");
+    formRequiredItem.parentElement.classList.add("_form-error");
+    let inputError =
+      formRequiredItem.parentElement.querySelector(".form__error");
+    if (inputError) formRequiredItem.parentElement.removeChild(inputError);
+    if (formRequiredItem.dataset.error) {
+      formRequiredItem.parentElement.insertAdjacentHTML(
+        "beforeend",
+        `<div class="form__error">${formRequiredItem.dataset.error}</div>`
+      );
+    }
+  },
+  removeError(formRequiredItem) {
+    formRequiredItem.classList.remove("_form-error");
+    formRequiredItem.parentElement.classList.remove("_form-error");
+    if (formRequiredItem.parentElement.querySelector(".form__error")) {
+      formRequiredItem.parentElement.removeChild(
+        formRequiredItem.parentElement.querySelector(".form__error")
+      );
+    }
+  },
+  formClean(form) {
+    form.reset();
+    setTimeout(() => {
+      let inputs = form.querySelectorAll("input,textarea");
+      for (let index = 0; index < inputs.length; index++) {
+        const el = inputs[index];
+        el.parentElement.classList.remove("_form-focus");
+        el.classList.remove("_form-focus");
+        formValidate.removeError(el);
+      }
+      let checkboxes = form.querySelectorAll(".checkbox__input");
+      if (checkboxes.length > 0) {
+        for (let index = 0; index < checkboxes.length; index++) {
+          const checkbox = checkboxes[index];
+          checkbox.checked = true;
+        }
+      }
+      if (flsModules.select) {
+        let selects = form.querySelectorAll(".select");
+        if (selects.length) {
+          for (let index = 0; index < selects.length; index++) {
+            const select = selects[index].querySelector("select");
+            flsModules.select.selectBuild(select);
+          }
+        }
+      }
+    }, 0);
+  },
+  emailTest(formRequiredItem) {
+    return !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$/.test(
+      formRequiredItem.value
+    );
+  },
+};
+/// send form 1
+
+document.querySelector(".form-header").addEventListener("submit", (e) => {
+  e.preventDefault();
+  let self = e.currentTarget;
+  let formData = new FormData(self);
+
+  let phone = self.querySelector('[name="phone-head"]').value;
+  let name = self.querySelector('[name="name-head"]').value;
+  formData.append("Телефон", phone);
+  formData.append("Имя", name);
+
+  if (name.length > 10 && phone.length < 3) {
+    let xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          console.log("send");
+          setTimeout(() => {
+            alert("Вам скоро перезвонят!");
+          }, 300);
+        }
+      }
+    };
+    xhr.open("POST", "mailform-one.php", true);
+    xhr.send(formData);
+    self.reset();
+    console.log(phone.length);
+  } else {
+    alert(1);
+  }
+});
+/// forms order
+
+document.querySelector(".form-order").addEventListener("submit", (e) => {
+  e.preventDefault();
+  let self = e.currentTarget;
+  let formData = new FormData(self);
+  let phone = self.querySelector('[name="phone_1"]').value;
+  let name = self.querySelector('[name="name_1"]').value;
+  formData.append("Телефон", phone);
+  formData.append("Имя", name);
+
+  let xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+      if (xhr.status === 200) {
+        console.log("send");
+        setTimeout(() => {
+          alert("Вам скоро перезвонят!");
+        }, 300);
+      }
+    }
+  };
+  xhr.open("POST", "mailform-order.php", true);
+  xhr.send(formData);
+  self.reset();
+});
+
+// form plan 1
+document.querySelector(".form-plan1").addEventListener("submit", (e) => {
+  e.preventDefault();
+  let self = e.currentTarget;
+  let formData = new FormData(self);
+  let phone = self.querySelector('[name="phone-plan1"]').value;
+  let name = self.querySelector('[name="name-plan1"]').value;
+  if (phone.length === 17) {
+    formData.append("Телефон", phone);
+    formData.append("Имя", name);
+
+    let xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          console.log("send");
+          setTimeout(() => {
+            alert("Вам скоро перезвонят!");
+          }, 300);
+        }
+      }
+    };
+    xhr.open("POST", "mailform-order.php", true);
+    xhr.send(formData);
+    self.reset();
+  }
+});
+/// form plan 2
+document.querySelector(".form-plan2").addEventListener("submit", (e) => {
+  e.preventDefault();
+  let self = e.currentTarget;
+  let formData = new FormData(self);
+  let phone = self.querySelector('[name="phone-plan2"]').value;
+  let name = self.querySelector('[name="name-plan2"]').value;
+  if (phone.length === 17) {
+    formData.append("Телефон", phone);
+    formData.append("Имя", name);
+
+    let xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          console.log("send");
+          setTimeout(() => {
+            alert("Вам скоро перезвонят!");
+          }, 300);
+        }
+      }
+    };
+    xhr.open("POST", "mailform-order.php", true);
+    xhr.send(formData);
+    self.reset();
+  }
+});
+/// form plan 3
+document.querySelector(".form-plan3").addEventListener("submit", (e) => {
+  e.preventDefault();
+  let self = e.currentTarget;
+  let formData = new FormData(self);
+  let phone = self.querySelector('[name="phone-plan3"]').value;
+  let name = self.querySelector('[name="name-plan3"]').value;
+  if (phone.length === 17) {
+    formData.append("Телефон", phone);
+    formData.append("Имя", name);
+
+    let xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          console.log("send");
+          setTimeout(() => {
+            alert("Вам скоро перезвонят!");
+          }, 300);
+        }
+      }
+    };
+    xhr.open("POST", "mailform-order.php", true);
+    xhr.send(formData);
+    self.reset();
+  }
+});
+/// form favs
+document.querySelector(".form-favs").addEventListener("submit", (e) => {
+  e.preventDefault();
+  let self = e.currentTarget;
+  let formData = new FormData(self);
+  let phone = self.querySelector('[name="phone-favs"]').value;
+  let name = self.querySelector('[name="name-favs"]').value;
+  if (phone.length === 17) {
+    formData.append("Телефон", phone);
+    formData.append("Имя", name);
+
+    let xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          console.log("send");
+          setTimeout(() => {
+            alert("Вам скоро перезвонят!");
+          }, 300);
+        }
+      }
+    };
+    xhr.open("POST", "mailform-order.php", true);
+    xhr.send(formData);
+    self.reset();
+  }
+});
+/// form decor
+document.querySelector(".form-decor").addEventListener("submit", (e) => {
+  e.preventDefault();
+  let self = e.currentTarget;
+  let formData = new FormData(self);
+  let phone = self.querySelector('[name="phone-decor"]').value;
+  let name = self.querySelector('[name="name-decor"]').value;
+
+  if (phone.length === 17) {
+    formData.append("Телефон", phone);
+    formData.append("Имя", name);
+
+    let xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          console.log("send");
+          setTimeout(() => {
+            alert("Вам скоро перезвонят!");
+          }, 300);
+        }
+      }
+    };
+    xhr.open("POST", "mailform-order.php", true);
+    xhr.send(formData);
+    self.reset();
+  }
+});
+
+/// form body
+document.querySelector(".form-body").addEventListener("submit", (e) => {
+  e.preventDefault();
+  let self = e.currentTarget;
+  let formData = new FormData(self);
+  let phone = self.querySelector('[name="phone-fs"]').value;
+  let name = self.querySelector('[name="name-fs"]').value;
+  if (phone.length === 17) {
+    formData.append("Телефон", phone);
+    formData.append("Имя", name);
+
+    let xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          console.log("send");
+          setTimeout(() => {
+            alert("Вам скоро перезвонят!");
+          }, 300);
+        }
+      }
+    };
+    xhr.open("POST", "mailform-order.php", true);
+    xhr.send(formData);
+    self.reset();
+  }
 });

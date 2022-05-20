@@ -1,8 +1,9 @@
-<header data-scroll="70" data-scroll-show class="header">
+<header class="header">
   <div class="header__container">
     <a href="" class="header__logo"
       ><div class="logo-anim">
         <svg
+          class="logo-header"
           width="227"
           height="85"
           viewBox="0 0 227 85"
@@ -17,7 +18,7 @@
               />
               <animate
                 attributeName="fill"
-                values="#4BB5F0;#94F04B;#F05F4B;#9171F0;#FCD303"
+                values="#4BB5F0;#94F04B;#F05F4B;"
                 dur="10s"
                 repeatCount="indefinite"
               />
@@ -38,7 +39,7 @@
               />
               <animate
                 attributeName="fill"
-                values="#4BB5F0;#94F04B;#F05F4B;#9171F0;#FCD303"
+                values="#4BB5F0;#94F04B;#F05F4B"
                 dur="10s"
                 repeatCount="indefinite"
               />
@@ -68,7 +69,7 @@
               />
               <animate
                 attributeName="fill"
-                values="#4BB5F0;#94F04B;#F05F4B;#9171F0;#FCD303"
+                values="#4BB5F0;#94F04B;#F05F4B;"
                 dur="10s"
                 repeatCount="indefinite"
               />
@@ -90,7 +91,7 @@
               />
               <animate
                 attributeName="fill"
-                values="#4BB5F0;#94F04B;#F05F4B;#9171F0;#FCD303"
+                values="#4BB5F0;#94F04B;#F05F4B;"
                 dur="10s"
                 repeatCount="indefinite"
               />
@@ -105,11 +106,21 @@
         </svg>
       </div>
     </a>
-    <div class="header__menu menu">
-      <div class="menu__icon">
-        <span></span>
-      </div>
+    <div class="header__menu menu col-lg">
       <nav class="menu__body">
+        <svg
+          class="modal-arr menu__body-arr"
+          width="30"
+          height="26"
+          viewBox="0 0 30 26"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M11.5359 2C13.0755 -0.666662 16.9245 -0.666666 18.4641 2L28.8564 20C30.396 22.6667 28.4715 26 25.3923 26L4.6077 26C1.5285 26 -0.396009 22.6667 1.14359 20L11.5359 2Z"
+            fill="#1B1B1B"
+          />
+        </svg>
         <ul class="menu__list">
           <li>
             <a data-goto=".works" data-goto-header href="#" class="menu__link"
@@ -138,9 +149,9 @@
         </ul>
       </nav>
     </div>
-    <div class="header__icons">
-      <a href="#" class="header__icon"
-        ><svg
+    <ul class="header__icons">
+      <li class="header__icon">
+        <svg
           class="header__phone"
           width="40"
           height="40"
@@ -157,10 +168,11 @@
             class="fill-white"
             d="M17.9191 13.5477L17.1492 13.8556L17.9191 13.5477ZM18.7976 15.7441L19.5675 15.4361L18.7976 15.7441ZM18.5305 17.43L19.1675 17.9608V17.9608L18.5305 17.43ZM18.0577 17.9974L18.6947 18.5282L18.0577 17.9974ZM18.1596 20.2429L17.5733 20.8292L18.1596 20.2429ZM19.7571 21.8404L20.3434 21.2541L19.7571 21.8404ZM22.0026 21.9423L21.4718 21.3053L22.0026 21.9423ZM22.57 21.4695L23.1008 22.1064L23.1008 22.1064L22.57 21.4695ZM24.2559 21.2024L23.948 21.9722L24.2559 21.2024ZM26.4523 22.0809L26.7603 21.3111H26.7602L26.4523 22.0809ZM14.0789 13.3291H16.3716V11.6709H14.0789V13.3291ZM17.1492 13.8556L18.0278 16.052L19.5675 15.4361L18.6889 13.2398L17.1492 13.8556ZM17.8936 16.8992L17.4208 17.4666L18.6947 18.5282L19.1675 17.9608L17.8936 16.8992ZM17.5733 20.8292L19.1708 22.4267L20.3434 21.2541L18.7459 19.6566L17.5733 20.8292ZM22.5334 22.5792L23.1008 22.1064L22.0392 20.8325L21.4718 21.3053L22.5334 22.5792ZM23.948 21.9722L26.1444 22.8508L26.7602 21.3111L24.5639 20.4325L23.948 21.9722ZM26.6709 23.6284V25.9211H28.3291V23.6284H26.6709ZM25.9211 26.6709C18.9667 26.6709 13.3291 21.0333 13.3291 14.0789H11.6709C11.6709 21.9491 18.0509 28.3291 25.9211 28.3291V26.6709ZM26.6709 25.9211C26.6709 26.3352 26.3352 26.6709 25.9211 26.6709V28.3291C27.251 28.3291 28.3291 27.251 28.3291 25.9211H26.6709ZM26.1444 22.8508C26.4624 22.9779 26.6709 23.2859 26.6709 23.6284H28.3291C28.3291 22.6078 27.7078 21.6901 26.7603 21.3111L26.1444 22.8508ZM23.1008 22.1064C23.3371 21.9095 23.6624 21.858 23.948 21.9722L24.5639 20.4325C23.7127 20.0921 22.7434 20.2456 22.0392 20.8325L23.1008 22.1064ZM19.1708 22.4267C20.0836 23.3395 21.5417 23.4056 22.5334 22.5792L21.4718 21.3053C21.139 21.5826 20.6497 21.5604 20.3434 21.2541L19.1708 22.4267ZM17.4208 17.4666C16.5944 18.4583 16.6605 19.9164 17.5733 20.8292L18.7459 19.6566C18.4395 19.3503 18.4174 18.861 18.6947 18.5282L17.4208 17.4666ZM18.0278 16.052C18.142 16.3376 18.0905 16.6629 17.8936 16.8992L19.1675 17.9608C19.7544 17.2566 19.9079 16.2873 19.5675 15.4361L18.0278 16.052ZM16.3716 13.3291C16.7141 13.3291 17.0221 13.5376 17.1492 13.8556L18.6889 13.2398C18.3099 12.2922 17.3922 11.6709 16.3716 11.6709V13.3291ZM14.0789 11.6709C12.749 11.6709 11.6709 12.749 11.6709 14.0789H13.3291C13.3291 13.6648 13.6648 13.3291 14.0789 13.3291V11.6709Z"
             fill="#94F04B"
-          /></svg
-      ></a>
-      <a href="#" id="show-messagers" class="header__icon"
-        ><svg
+          />
+        </svg>
+      </li>
+      <li id="show-messagers" class="header__icon">
+        <svg
           class="header__message"
           width="40"
           height="40"
@@ -188,8 +200,8 @@
             stroke-linejoin="round"
           />
         </svg>
-      </a>
-      <a href="#" class="header__icon header__favorites-ic">
+      </li>
+      <li class="header__icon header__favorites-ic">
         <svg
           class="favorites-ic__outer"
           width="40"
@@ -224,7 +236,24 @@
           />
         </svg>
         <span class="favs-number"></span>
-      </a>
+      </li>
+    </ul>
+    <div class="menu__icon">
+      <svg
+        class="burger-bg"
+        width="51"
+        height="56"
+        viewBox="0 0 51 56"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M21.4435 1.48307C24.1048 -0.0534588 27.3837 -0.0534596 30.0451 1.48307L46.2742 10.8529C48.9355 12.3895 50.575 15.2291 50.575 18.3021V37.0419C50.575 40.1149 48.9355 42.9545 46.2742 44.4911L30.0451 53.8609C27.3837 55.3975 24.1048 55.3975 21.4435 53.8609L5.21439 44.4911C2.55304 42.9545 0.913586 40.1149 0.913586 37.0419V18.3021C0.913586 15.2291 2.55304 12.3895 5.21439 10.8529L21.4435 1.48307Z"
+          fill="#1B1B1B"
+        />
+      </svg>
+
+      <span></span>
     </div>
     <div class="messagers">
       <div class="messagers__modal">
@@ -243,7 +272,11 @@
         </svg>
         <p class="messagers__title">Напишите нам!</p>
         <div class="messagers__icons">
-          <a href="#" class="messagers__icon messager__whatsapp">
+          <a
+            href="#"
+            target="_blank"
+            class="messagers__icon messager__whatsapp"
+          >
             <svg
               class="whatsapp-ic"
               width="52"
@@ -266,7 +299,7 @@
               />
             </svg>
           </a>
-          <a href="#" class="messagers__icon messager__telegram"
+          <a href="#" target="_blank" class="messagers__icon messager__telegram"
             ><svg
               class="telegram-ic"
               width="52"
@@ -289,7 +322,7 @@
               />
             </svg>
           </a>
-          <a href="#" class="messagers__icon messager__vk"
+          <a href="#" target="_blank" class="messagers__icon messager__vk"
             ><svg
               class="vk-ic"
               width="52"
@@ -315,14 +348,16 @@
         </div>
       </div>
     </div>
+
     <form
       class="form form-header"
-      action="#"
       name="form-header"
       id="form-header"
+      action="mailform-one.php"
+      method="POST"
     >
       <svg
-        class="modal-arr"
+        class="modal-arr modal-arr-form"
         width="30"
         height="26"
         viewBox="0 0 30 26"
@@ -339,32 +374,61 @@
           Получите консультацию специалиста:
         </p>
 
-        <div class="form-header__input-field">
+        <div class="input-field sm-mrg">
           <input
-            data-error="Введен не верный E-mail"
+            data-error="Введено некорректное имя"
             data-required="name"
             type="text"
-            name="form[1]"
+            data-validate
+            required
+            name="name-head"
           />
-          <label class="input-label">
-            <span>Ваше имя</span>
-          </label>
+          <label class="input-label" for="name-head">Ваше имя</label>
         </div>
 
-        <div class="form-header__input-field">
+        <div class="input-field sm-mrg">
           <input
-            data-error="Введен не верный E-mail"
-            data-required="name"
+            data-error="Введен некорректный номер телефона"
+            class="phone-num"
+            data-validate
+            required
+            id="phone_head"
             type="text"
-            name="form[1]"
-            id="phone-inp"
+            name="phone-head"
           />
-          <label class="input-label">
-            <span>Номер телефона</span>
-          </label>
+          <label class="input-label" for="phone-head">Номер телефона</label>
         </div>
 
         <div class="form-header__checkbox checkbox">
+          <span class="checkbox__bg"
+            ><svg
+              width="32"
+              height="36"
+              viewBox="0 0 32 36"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M14.5 0.866026C15.4282 0.330127 16.5718 0.330127 17.5 0.866025L30.0885 8.13398C31.0167 8.66987 31.5885 9.66025 31.5885 10.7321V25.268C31.5885 26.3397 31.0167 27.3301 30.0885 27.866L17.5 35.134C16.5718 35.6699 15.4282 35.6699 14.5 35.134L1.91154 27.866C0.983339 27.3301 0.411543 26.3397 0.411543 25.268V10.732C0.411543 9.66025 0.98334 8.66987 1.91154 8.13398L14.5 0.866026Z"
+                fill="#0F0F0F"
+              />
+            </svg>
+          </span>
+          <input
+            id="c_1"
+            class="checkbox__input"
+            type="checkbox"
+            value="1"
+            name="c_1"
+            data-required="checkbox"
+            checked
+          />
+          <label for="c_1" class="checkbox__label"
+            >Соглашаюсь на обработку персональных данных</label
+          >
+        </div>
+
+        <!-- <div class="form-header__checkbox checkbox">
           <span class="checkbox__bg"
             ><svg
               width="32"
@@ -389,7 +453,7 @@
             name="form[]"
           />
           <label for="c_1">Соглашаюсь на обработку персональных данных</label>
-        </div>
+        </div> -->
       </div>
       <button type="submit" class="btn btn--underlined">Жду звонка</button>
     </form>
@@ -426,27 +490,3 @@
     </div>
   </div>
 </header>
-
-<!--show when no favs
-<div class="check-works">
-  <div class="check-works__modal">
-    <svg
-      class="modal-arr"
-      width="30"
-      height="26"
-      viewBox="0 0 30 26"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M11.5359 2C13.0755 -0.666662 16.9245 -0.666666 18.4641 2L28.8564 20C30.396 22.6667 28.4715 26 25.3923 26L4.6077 26C1.5285 26 -0.396009 22.6667 1.14359 20L11.5359 2Z"
-        fill="#1B1B1B"
-      />
-    </svg>
-    <p class="messagers__title">В избранном пока пусто!</p>
-    <a data-goto=".works" data-goto-header href="#" class="menu__link"
-      >Добавить проекты</a
-    >
-  </div>
-</div>
--->

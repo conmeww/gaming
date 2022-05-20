@@ -498,18 +498,18 @@ export function menuInit() {
   if (document.querySelector(".icon-menu")) {
     document.addEventListener("click", function (e) {
       if (bodyLockStatus && e.target.closest(".icon-menu")) {
-        bodyLockToggle();
+        //bodyLockToggle();
         document.documentElement.classList.toggle("menu-open");
       }
     });
   }
 }
 export function menuOpen() {
-  bodyLock();
+//  bodyLock();
   document.documentElement.classList.add("menu-open");
 }
 export function menuClose() {
-  bodyUnlock();
+ // bodyUnlock();
   document.documentElement.classList.remove("menu-open");
 }
 // Модуль "показать еще" =======================================================================================================================================================================================================================
@@ -755,8 +755,22 @@ const iconMenu = document.querySelector(".menu__icon");
 const menuBody = document.querySelector(".menu__body");
 if (iconMenu) {
   iconMenu.addEventListener("click", function (e) {
-    document.body.classList.toggle("_lock");
+   // document.body.classList.toggle("_lock");
     iconMenu.classList.toggle("_active");
     menuBody.classList.toggle("_active");
   });
 }
+// close menu
+document.addEventListener(
+  "click",
+  function (event) {
+    if (
+      !event.target.closest(".menu__icon") &&
+      !event.target.closest(".menu__body")  
+    ) {
+      iconMenu.classList.remove("_active");
+      menuBody.classList.remove("_active");
+    }
+  },
+  false
+);

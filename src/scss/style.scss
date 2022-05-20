@@ -22,11 +22,11 @@ $mainColor: #000; // Цвет шрифта по умолчанию
 
 // НАСТРОЙКИ ===============================================================================================================================================================================================================================================================================================
 // Минимальная ширина страницы
-$minWidth: 320;
+$minWidth: 91vw;
 // Ширина полотна (макета)
-$maxWidth: 1920;
+$maxWidth: 91vw;
 // Ширина ограничивающего контейнера (0 = нет ограничения)
-$maxWidthContainer: 1800;
+$maxWidthContainer: 91vw;
 // Общий отступ у контейнера
 // (30 = по 15px слева и справа, 0 = нет отступа)
 $containerPadding: 30;
@@ -65,10 +65,12 @@ body {
   min-height: 100%;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  //overflow: hidden;
+  padding: 0;
   // Прижимаем footer
   > main {
     flex: 1 1 auto;
+    // overflow-x: hidden;
   }
   // Фикс для слайдеров
   > * {
@@ -87,12 +89,12 @@ body {
   // Отзывчивая
   [class*="__container"] {
     @if ($maxWidthContainer>0) {
-      max-width: rem($maxWidthContainer);
+      max-width: ($maxWidthContainer);
       box-sizing: content-box;
       margin: 0 auto;
     }
     @if ($containerPadding>0) {
-      padding: 0 rem(math.div($containerPadding, 2));
+      padding: 0;
     }
   }
 } @else {
@@ -100,11 +102,11 @@ body {
   [class*="__container"] {
     margin: 0 auto;
     @if ($maxWidthContainer>0) {
-      max-width: rem($maxWidthContainer);
+      max-width: vw($maxWidthContainer);
       box-sizing: content-box;
     } @else {
       @if ($containerPadding>0) {
-        padding: 0 rem(math.div($containerPadding, 2));
+        padding: 0;
       }
     }
     @media (max-width: $pc) {
